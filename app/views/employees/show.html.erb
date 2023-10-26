@@ -1,0 +1,29 @@
+<h1><%= @employee.name %> | <%= @employee.department.name %> | Lvl: <%= @employee.level %></h1>
+
+<h3>Oldest Ticket</h3>
+<section class="oldest-ticket">
+  <li><%= @e_tix.first.subject %></li>
+</section>
+
+<h2>Tickets</h2>
+<ol>
+  <% @e_tix.each do |ticket| %>
+      <li><%= "#{ticket.subject} => age: #{ticket.age}" %></li>
+  <% end %>
+</ol>
+
+<h3>Best Friends</h3>
+<p><%= @employee.name %> shares tickets with</p>
+<ul class="besties">
+  <% @besties.each do | friend | %>
+    <li><%= friend %></li>
+  <% end %>
+</ul>
+
+<h3>Add Ticket</h3>
+<%= form_with url: "/employees/#{@employee.id}/tickets", method: :post, data: {turbo: false} do |form| %>
+  <%= form.label :ticket_id, "Ticket ID" %>
+  <%= form.text_field :ticket_id %>
+
+  <%= form.submit "Add Ticket" %>
+<% end %>
