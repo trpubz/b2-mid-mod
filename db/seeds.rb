@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+@d_mgmt = Department.create!(:name => "Management", floor: "Top")
+@d_it = Department.create!(:name => "IT", floor: "Basement")
+@d_devops = Department.create!(:name => "DevOps", floor: "Basement")
+@departments = [@d_mgmt, @d_it, @d_devops]
+@e_tp = @d_mgmt.employees.create!(:name => "TP", level: 3)
+@e_ap = @d_mgmt.employees.create!(name: "Amanda", level: 2)
+@e_dp = @d_it.employees.create!(name: "David", level: 1)
+@e_rp = @d_devops.employees.create!(name: "Robby", level: 1)

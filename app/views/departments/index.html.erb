@@ -1,0 +1,12 @@
+<h1>Departments</h1>
+
+<% @departments.each do | dept | %>
+    <section id="dept-<%= dept.id %>">
+
+      <h3><%= "#{dept.name} => #{dept.floor}" %></h3>
+
+      <h4>Employees</h4>
+      <p><%= dept.employees.all.pluck(:name).join(" | ") %></p>
+
+    </section>
+<% end %>
